@@ -4,7 +4,7 @@ import './App.css'
 import Availablebk from './pages/Availablebk'
 import Allbooks from './pages/Allbooks'
 import Borrowedbk from './pages/Borrowedbk'
-import Navbar from './component/navbar'
+import Navbar from './component/Navbar'
 
 function App() {
   
