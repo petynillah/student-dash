@@ -1,0 +1,143 @@
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    
+}
+.navbar{
+    display: flex;
+    flex-direction: column;
+    background-color: #8ECDF7;
+    padding: 20px;
+    width: 25%;  
+    height: 100vh; 
+    position: sticky;
+    top: 0;
+    gap: 20px;
+    justify-content: start;
+    align-items: center;
+    text-transform: capitalize;
+}
+.navbar img{
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+}
+.list{
+    display: flex;
+   
+
+}
+.list ul{
+    list-style-type:disc;
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+.list li a{
+    text-decoration: none;
+    font-size: 20px;
+    color: black; /* Inside text color */
+  text-shadow: 
+    -1px -1px 0 #fff,  
+     1px -1px 0 #fff,
+    -1px  1px 0 #fff,
+     1px  1px 0 #fff; /* Creates a solid 1px white border */
+}
+.list li {
+    margin-bottom:20px ;
+    list-style: none;
+}
+.set{
+   
+     margin-top: auto;
+   border-top: 2px solid grey;
+   padding: 20px;
+}
+.set a{
+     display: flex;
+    justify-items: end;
+    color: black;
+    text-decoration: none;
+    
+  text-shadow: 
+    -1px -1px 0 #fff,  
+     1px -1px 0 #fff,
+    -1px  1px 0 #fff,
+     1px  1px 0 #fff; /* Creates a solid 1px white border */
+}
+
+/*Dashboard*/
+
+.dashboard{
+    background-color: white;
+    width: 75%; 
+    overflow-y: auto;
+    top: 0;
+}
+.head1{
+    color: black;
+    text-transform:uppercase;
+    font-weight: bold;
+    align-items: center;
+}
+.search-bar{
+    padding-top: 30px;
+     color: black;
+    font-style: italic;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    padding-left: 100px;
+    gap: 200px;
+}
+.search-bar a{
+    background-color: grey;
+    border-radius: 30px;
+    width: 100px;
+    color: black;
+    padding: 10px;
+    border: 2px solid #8f9aa1;
+    text-decoration: none;
+}
+.search input{
+    padding: 15px;
+    width: 80%;
+    margin-top: 10px;
+    background-color: rgb(185, 183, 183);
+    outline: none;
+    color: black;
+    border: none;
+}
+.head2{
+    color: black;
+    text-decoration: underline;
+    font-size: 25px;
+    padding-top: 20px;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.table-part{
+    width: 80%;
+    margin: 0 auto;
+
+}
+.table-part table, th, td{
+    border: 2px solid #8ECDF7;
+    border-collapse: collapse;    
+}
+.table-part th, td{
+    padding: 10px 20px;
+    color: black;
+    font-size: 15px;
+    text-transform: capitalize;
+
+}
