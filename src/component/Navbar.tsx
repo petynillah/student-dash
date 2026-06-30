@@ -7,11 +7,11 @@ function Navbar(){
         <img src={logo} alt='logo'></img>
             <div className='list'>
                 <ul>
-                    <li><a href="http://localhost:5174/studentdash">home</a></li>
-                    <li><a href="allbooks">Books</a></li>
-                    <li><a href="availablebk"> check if a book exists</a></li>
-                    <li><a href="borrowedbk">borrowed books</a></li>
-                    <li><a href="allbooks">read status</a></li>
+                    <li><a href='https://library-login.vercel.app/studentdash'>home</a></li>
+                    <li><a href="https://student-dash-zeta.vercel.app/allbooks">Books</a></li>
+                    <li><a href="https://student-dash-zeta.vercel.app/availablebk"> check if a book exists</a></li>
+                    <li><a href="https://student-dash-zeta.vercel.app/borrowedbk">borrowed books</a></li>
+                    <li><a href="https://student-dash-zeta.vercel.app/allbooks">read status</a></li>
                     <li><a href="">payment status</a></li>
                     
                 </ul>
