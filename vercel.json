@@ -1,6 +1,7 @@
 {
-    "rewrites":[
-        {"source":"/(.*)", "destination": "/index.html"
-    }
-    ]
+  "rewrites": [
+    { "source": "/student/assets/:path*", "destination": "/assets/:path*" },
+    { "source": "/student/:path*", "destination": "/index.html" },
+    { "source": "/student", "destination": "/index.html" }
+  ]
 }
