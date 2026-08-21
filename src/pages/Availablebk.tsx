@@ -1,17 +1,89 @@
-function Availablebk(){
-    return(
-        <>
-            <h1 className="head1">book dashboard</h1>
-            <div className="search">
-                <form className="search-bar">
-                    <label>Search for a book</label>
-                    <a href="">Search</a><br/>
-                </form>
-                <form>
-                    <input type="text"/>
-                </form>
-            </div>
-        </>
-    )
+import React, { useState, useEffect } from 'react';
+import { searchAvailableBooks } from '../api';
+
+interface BookSchema {
+  book_title: string;
+  author: string;
+  isbn_number: string;
+  category: string;
+  sub_category?: string;
 }
-export default Availablebk
+
+function Availablebk(): React.JSX.Element {
+  const [books, setBooks] = useState<BookSchema[]>([]);
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    setLoading(true);
+    setError(null);
+
+    const timeoutId = setTimeout(async () => {
+      const response = await searchAvailableBooks(searchQuery);
+      if (response.success && response.data) {
+        setBooks(response.data);
+      } else {
+        setError(response.message || 'Failed to load available books.');
+      }
+      setLoading(false);
+    }, 400); // waits for typing to pause before firing the request
+
+    return () => clearTimeout(timeoutId); // cancels the pending call if user keeps typing
+  }, [searchQuery]);
+
+  return (
+    <>
+      <h1 className="head1">Book Dashboard</h1>
+
+      <div className="search" style={{ padding: '0 30px', marginBottom: '20px' }}>
+        <label htmlFor="book-search" style={{ display: 'block', marginBottom: '8px', fontWeight: 'bold' }}>
+          Search for a book
+        </label>
+        <input
+          id="book-search"
+          type="text"
+          placeholder="Search title, author, or ISBN..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          style={{ padding: '8px', width: '300px', borderRadius: '4px', border: '1px solid #ccc' }}
+        />
+      </div>
+
+      <div className="table-part" style={{ padding: '0 30px' }}>
+        {loading ? (
+          <p>Loading available books...</p>
+        ) : error ? (
+          <p style={{ color: '#c0392b' }}>{error}</p>
+        ) : books.length === 0 ? (
+          <p>No available books match your search.</p>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>Book Title</th>
+                <th>Author</th>
+                <th>ISBN Number</th>
+                <th>Category</th>
+                <th>Sub-category</th>
+              </tr>
+            </thead>
+            <tbody>
+              {books.map((b, idx) => (
+                <tr key={b.isbn_number || idx}>
+                  <td>{b.book_title}</td>
+                  <td>{b.author}</td>
+                  <td>{b.isbn_number}</td>
+                  <td>{b.category}</td>
+                  <td>{b.sub_category || 'N/A'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
+    </>
+  );
+}
+
+export default Availablebk;

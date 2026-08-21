@@ -10,14 +10,14 @@ function App() {
   
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename='/student/'>
       <div className='container'>
         <Navbar/>
           <div className='dashboard'>
             <Routes>
-              <Route path='availablebk' element={<Availablebk/>}/>
-              <Route path='allbooks' element={<Allbooks/>}/>
-              <Route path='borrowedbk' element={<Borrowedbk/>}/>
+              <Route path='/availablebk' element={<Availablebk/>}/>
+              <Route path='/allbooks' element={<Allbooks/>}/>
+              <Route path='/borrowedbk' element={<Borrowedbk/>}/>
             </Routes>
               </div>
           </div>
