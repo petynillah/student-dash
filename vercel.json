@@ -2,8 +2,8 @@
   "trailingSlash": false,
   "rewrites": [
     { 
-      "source": "/studentdash/((?!assets/|.*\\..*).*)", 
-      "destination": "/studentdash/index.html" 
+      "source": "/student/((?!assets/|.*\\..*).*)", 
+      "destination": "/student/index.html" 
     }
   ]
 }

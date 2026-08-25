@@ -10,7 +10,7 @@ function App() {
   
   return (
     <>
-      <BrowserRouter basename='/studentdash/'>
+      <BrowserRouter basename='/student/'>
       <div className='container'>
         <Navbar/>
           <div className='dashboard'>
