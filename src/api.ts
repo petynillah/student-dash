@@ -33,7 +33,7 @@ export const getStudentById = async (id: string | number): Promise<ApiResponse> 
   }
 };
 
-// 📚 GENERAL CATALOG (Calls exports.getBooks)
+// 📚 GENERAL CATALOG
 export const getAllBooks = async (): Promise<ApiResponse> => {
   try {
     const response = await api.get('/book/all');
@@ -43,7 +43,7 @@ export const getAllBooks = async (): Promise<ApiResponse> => {
   }
 };
 
-// 🔍 AVAILABLE CATALOG (Calls exports.getAvailableBooks)
+// 🔍 AVAILABLE CATALOG
 export const getAvailableBooks = async (): Promise<ApiResponse> => {
   try {
     const response = await api.get('/book/available');
@@ -52,6 +52,7 @@ export const getAvailableBooks = async (): Promise<ApiResponse> => {
     return { success: false, message: error.response?.data?.error || 'Load failed' };
   }
 };
+
 export const searchAvailableBooks = async (search: string): Promise<ApiResponse> => {
   try {
     const response = await api.get('/book/available', {
@@ -66,7 +67,7 @@ export const searchAvailableBooks = async (search: string): Promise<ApiResponse>
   }
 };
 
-// ⏳ PERSONAL ACTIVE LOANS (Calls exports.searchActiveBorrowing)
+// ⏳ PERSONAL ACTIVE LOANS
 export const getBorrowedBooks = async (studentId: string | number): Promise<ApiResponse> => {
   try {
     const response = await api.get(`/book/borrowed/${studentId}`);

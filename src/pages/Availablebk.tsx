@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { searchAvailableBooks } from '../api';
+import { useCrossAppAuthSync } from '../useCrossAppAuthSync';
 
 interface BookSchema {
   book_title: string;
@@ -10,27 +11,40 @@ interface BookSchema {
 }
 
 function Availablebk(): React.JSX.Element {
+  const isAuthReady = useCrossAppAuthSync(); // Call our new isolation sync tool
   const [books, setBooks] = useState<BookSchema[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // FIXED: If authentication isn't verified yet, set loading to true and wait safely
+    if (!isAuthReady) {
+      setLoading(true);
+      return; 
+    }
+    
     setLoading(true);
     setError(null);
 
     const timeoutId = setTimeout(async () => {
-      const response = await searchAvailableBooks(searchQuery);
-      if (response.success && response.data) {
-        setBooks(response.data);
-      } else {
-        setError(response.message || 'Failed to load available books.');
+      try {
+        const response = await searchAvailableBooks(searchQuery);
+        if (response.success && response.data) {
+          setBooks(response.data);
+        } else {
+          setError(response.message || 'Failed to load available books.');
+        }
+      } catch (err) {
+        setError('A network exception occurred while fetching catalog files.');
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     }, 400); // waits for typing to pause before firing the request
 
     return () => clearTimeout(timeoutId); // cancels the pending call if user keeps typing
-  }, [searchQuery]);
+  // FIXED: Both parameters are now securely combined into a unified, correct dependency array
+  }, [searchQuery, isAuthReady]);
 
   return (
     <>
