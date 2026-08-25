@@ -1,6 +1,9 @@
 {
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { 
+      "source": "/studentdash/((?!assets/|.*\\..*).*)", 
+      "destination": "/studentdash/index.html" 
+    }
   ]
 }
