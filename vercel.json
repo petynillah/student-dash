@@ -1,15 +1,7 @@
 {
-  "trailingSlash": false,
   "rewrites": [
-    
-    { "source": "/student/assets/:path*", "destination": "/student/assets/:path*" },
-
-    
-    { "source": "/student/:path*", "destination": "/student/index.html" },
-    { "source": "/student", "destination": "/student/index.html" },
-
-    { "source": "/studentdash", "destination": "/index.html" },
-    { "source": "/studentlogin", "destination": "/index.html" },
-    { "source": "/settings", "destination": "/index.html" }
+    { "source": "/student/assets/:path*", "destination": "/assets/:path*" },
+    { "source": "/student/:path*", "destination": "/index.html" },
+    { "source": "/student", "destination": "/index.html" }
   ]
 }
