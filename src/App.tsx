@@ -5,6 +5,7 @@ import Availablebk from './pages/Availablebk'
 import Allbooks from './pages/Allbooks'
 import Borrowedbk from './pages/Borrowedbk'
 import Navbar from './component/Navbar'
+import Settings from './component/StudentSettings'
 
 function App() {
   
@@ -18,6 +19,7 @@ function App() {
               <Route path='/availablebk' element={<Availablebk/>}/>
               <Route path='/allbooks' element={<Allbooks/>}/>
               <Route path='/borrowedbk' element={<Borrowedbk/>}/>
+              <Route path='/settings' element ={<Settings/>}/>
 
               <Route path='/student/availablebk' element={<Availablebk/>}/>
               <Route path='/student/allbooks' element={<Allbooks/>}/>
