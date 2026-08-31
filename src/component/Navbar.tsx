@@ -4,8 +4,8 @@ import { APP_URLS } from '../Appurl'
 
 function Navbar(): React.JSX.Element {
   const handleLogout = () => {
-    localStorage.removeItem('jwtToken');
-    window.location.href = `{${APP_URLS.login}/login/studentlogin`;
+    localStorage.clear();
+    window.location.href = `${APP_URLS.login}/login/studentlogin`;
   };
 
   return (
